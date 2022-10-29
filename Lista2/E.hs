@@ -10,14 +10,15 @@ addZeros a b | length a < length b = addZeros b a
              | otherwise = addZeros a (0:b)
 
 transformar :: [Int] -> Int -> [Int]
-transformar [] _ = []
+transformar [] 0 = []
+transformar [] n = [n]
 transformar (a:as) x = mod (a+x) 10 : transformar as (div (a + x) 10)
 
 somarListas :: [Int] -> [Int] -> [Int]
 somarListas [] [] = []
 somarListas a [] = a
 somarListas [] b = b
-somarListas a b = auxfuncCall (fst(addZeros a b)) (snd(addZeros a b))
+somarListas a b = reverse (transformar (reverse (auxfuncCall (fst(addZeros a b)) (snd(addZeros a b)))) 0)
 
 main :: IO ()
 main = do

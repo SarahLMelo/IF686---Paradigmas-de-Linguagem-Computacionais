@@ -4,7 +4,7 @@ type Valor = Int
 conta :: (Comando, Valor) -> Int -> Int
 conta ("Multiplica", v) n = v * n
 conta ("Soma", v) n = v + n
-conta ("Subtrai", v) n = v - n
+conta ("Subtrai", v) n = n - v
 conta ("Divide", v) 0 = -666
 conta ("Divide", v) n = div v n
 
